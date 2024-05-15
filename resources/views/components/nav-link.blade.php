@@ -1,3 +1,4 @@
+@props(['active' => false])
 {{-- {{ $attribute }} digunakan untuk menggantikan atribute yang ada pada view (href="/") --}}
 <a {{ $attributes }}
     class="{{ $active ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} 
