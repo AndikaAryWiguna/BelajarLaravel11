@@ -4,25 +4,29 @@
     <x-slot:title>{{ $title }}</x-slot:title>
 
     <section>
-        <div class="container px-4 rounded">
-            @foreach ($posts as $post)
-                <div class="row mt-3 shadow-lg rounded">
-                    <div class="col-md-4">
-                        <img src="{{ $post['img'] }}" class="card-img-top" alt="">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h3 class="card-title text-3xl fw-bold hover:underline">{{ $post['title'] }}</h3>
-                            <p class="card-text">{{ Str::limit($post['body'], '300') }}</p>
-                            <div class="mt-2">
-                                <a href="#" class="fst-italic">{{ $post['author'] }}</a> |
+        <div class="container">
+            <div class="row justify-content-center">
+                @foreach ($posts as $post)
+                    <div class="col-4 mt-3">
+                        <div class="p-3 border shadow-sm rounded">
+                            {{-- Header --}}
+                            <div class="d-flex justify-content-between mb-4">
+                                <a href="" class="btn btn-light">Kategori</a>
                                 {{ $post->created_at->diffForHumans() }}
                             </div>
-                            <a href="/posts/{{ $post['slug'] }}" class="btn btn-primary mt-2">Read More &raquo;</a>
+
+                            {{-- Body --}}
+                            <h3 class="card-title text-3xl fw-bold hover:underline">{{ $post['title'] }}</h3>
+                            <p class="card-text">{{ Str::limit($post['body'], '300') }}</p>
+                            <div class="d-flex justify-content-between mt-4">
+                                <a href="/authors/{{ $post->author->id }}"
+                                    class="hover:underline content-center">{{ $post->author->name }}</a>
+                                <a href="/posts/{{ $post['slug'] }}" class="btn btn-primary">Read More &raquo;</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     </section>
 </x-layout>
