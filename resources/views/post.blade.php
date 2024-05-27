@@ -14,7 +14,7 @@
                         <h3 class="card-title text-3xl fw-bold">{{ $post['title'] }}</h3>
                         <p class="card-text">{{ $post['body'] }}</p>
                         <div class="mt-2">
-                            <a href="#" class="fst-italic">{{ $post['author'] }}</a> |
+                            <a href="#" class="fst-italic">{{ $post->author->name }}</a> |
                             {{ $post->created_at->format('j-F-Y') }}
                         </div>
                         <a href="/posts" class="btn btn-primary mt-2"> &laquo; Back To Posts</a>
