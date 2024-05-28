@@ -12,11 +12,14 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h3 class="card-title text-3xl fw-bold">{{ $post['title'] }}</h3>
+                        <a href="/kategoris/{{ $post->kategori->slug }}"
+                            class="btn btn-light">{{ $post->kategori->name }}</a>
                         <p class="card-text">{{ $post['body'] }}</p>
                         <div class="mt-2">
                             <a href="#" class="fst-italic">{{ $post->author->name }}</a> |
                             {{ $post->created_at->format('j-F-Y') }}
                         </div>
+
                         <a href="/posts" class="btn btn-primary mt-2"> &laquo; Back To Posts</a>
                     </div>
                 </div>
