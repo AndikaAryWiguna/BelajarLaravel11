@@ -21,7 +21,7 @@
                             <p class="card-text">{{ Str::limit($post['body'], '300') }}</p>
                             <div class="d-flex justify-content-between mt-4">
                                 <a href="/authors/{{ $post->author->username }}"
-                                    class="hover:underline content-center">{{ $post->author->name }}</a>
+                                    class="hover:underline content-center text-decoration-none">{{ $post->author->name }}</a>
                                 <a href="/posts/{{ $post['slug'] }}" class="btn btn-primary">Read More &raquo;</a>
                             </div>
                         </div>
