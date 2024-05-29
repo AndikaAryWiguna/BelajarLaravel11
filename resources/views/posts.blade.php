@@ -11,7 +11,8 @@
                         <div class="p-3 border shadow-sm rounded">
                             {{-- Header --}}
                             <div class="d-flex justify-content-between mb-4">
-                                <a href="" class="btn btn-light">Kategori</a>
+                                <a href="/kategoris/{{ $post->kategori->slug }}"
+                                    class="btn btn-{{ $post->kategori->color }}">{{ $post->kategori->name }}</a>
                                 {{ $post->created_at->diffForHumans() }}
                             </div>
 
@@ -19,8 +20,8 @@
                             <h3 class="card-title text-3xl fw-bold hover:underline">{{ $post['title'] }}</h3>
                             <p class="card-text">{{ Str::limit($post['body'], '300') }}</p>
                             <div class="d-flex justify-content-between mt-4">
-                                <a href="/authors/{{ $post->author->id }}"
-                                    class="hover:underline content-center">{{ $post->author->name }}</a>
+                                <a href="/authors/{{ $post->author->username }}"
+                                    class="hover:underline content-center text-decoration-none">{{ $post->author->name }}</a>
                                 <a href="/posts/{{ $post['slug'] }}" class="btn btn-primary">Read More &raquo;</a>
                             </div>
                         </div>
