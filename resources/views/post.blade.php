@@ -6,8 +6,8 @@
     <section>
         <div class="container px-4 rounded">
             <div class="row mt-3 shadow-lg rounded">
-                <div class="col-md-4">
-                    <img src="{{ $post['img'] }}" class="card-img-top" alt="">
+                <div class="col-md-4 p-2">
+                    <img src="https://picsum.photos/1200/1400" class="card-img-top" alt="">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">

@@ -13,6 +13,9 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
+    {{-- CDN icon bootstrap --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
     {{-- Tailwind CSS Complementary --}}
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     @vite('resources/css/app.css')
@@ -34,7 +37,7 @@
         {{-- Main --}}
         {{-- Variable {{ $slot }} akan diisi pada apapun yang ada dalam isi component ketika digunakan pada view --}}
         <main>
-            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <div class="mx-auto py-6">
                 {{-- Slot ini akan diisi oleh konten yang ada pada tampilan ketika dipanggil (x-templating) --}}
                 {{ $slot }}
             </div>
@@ -48,6 +51,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
+
+    {{-- Script Icon --}}
+    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
 </body>
 
 </html>
