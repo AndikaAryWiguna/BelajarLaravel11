@@ -19,7 +19,9 @@ class Post extends Model
     // fillable 'untuk yang bisa diisi'
     // guarted 'untuk yang didalamnya tidak boleh diisi'
     protected $fillable = ['title','author','slug','body'];
+    protected $with = ['kategori','author'];
 
+    // Relationships
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -29,4 +31,33 @@ class Post extends Model
     {
         return $this->belongsTo(Kategori::class);
     }
+
+    // Local Scope Untuk filter data
+    public function scopeFilter($query, array $filters) {
+        $query->when($filters['search'] ?? false, function($query,  $search){
+            return $query->where('title', 'like', '%' . $search . '%')
+                         ->orWhere('body', 'like', '%' . $search . '%');
+        });
+
+        $query->when($filters['kategori'] ?? false, function ($query, $kategori){
+            return $query->whereHas('kategori', function ($query) use ($kategori){
+                $query->where('slug', $kategori);
+            });
+        });
+
+        // When untuk author
+        $query->when($filters['author'] ?? false, function ($query, $author){
+            return $query->whereHas('author', function ($query) use ($author){
+                $query->where('username', $author);
+            });
+        });
+
+        // when author menggunakan arrow function
+        // $query->when($filters['author'] ?? false, fn($query, $author) =>
+        //     $query->whereHas('author', fn($query) =>
+        //         $query->whereHas('username', $author)
+        //     )
+        // );
+    }
+    
 }
