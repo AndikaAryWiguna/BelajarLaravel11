@@ -21,12 +21,16 @@
 
             <div class="hidden md:block">
                 <div class="ml-4 flex items-center md:ml-6">
+
                     <!-- Profile dropdown -->
                     <div class="relative ml-3">
                         <div>
                             <button type="button" @click="isOpen = !isOpen"
                                 class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                 id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                @auth
+                                    <h2 class="text-white mx-3">Wellcome back, {{ auth()->user()->username }}</h2>
+                                @endauth
                                 <span class="absolute -inset-1.5"></span>
                                 <span class="sr-only">Open user menu</span>
                                 <img class="h-8 w-8 rounded-full"
@@ -47,8 +51,19 @@
                                 tabindex="-1" id="user-menu-item-0">Your Profile</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                 tabindex="-1" id="user-menu-item-1">Settings</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                tabindex="-1" id="user-menu-item-2">Sign out</a>
+
+                            {{-- Auth midleware --}}
+                            @auth
+                                <form action="/logout" method="post">
+                                    @csrf
+                                    <button type="submit" class="block px-4 py-2 text-sm text-gray-700">
+                                        Logout
+                                    </button>
+                                </form>
+                            @else
+                                <a href="/login" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                    tabindex="-1" id="user-menu-item-2">Login</a>
+                            @endauth
                         </div>
                     </div>
                 </div>
