@@ -20,9 +20,12 @@ Route::post('/logout', [AuthController::class, 'logout' ]);
 Route::get('/register', [AuthController::class, 'register' ])->middleware('guest');
 Route::post('/register', [AuthController::class, 'store' ]);
 
-// Dashboard
-Route::get('/dashboard', [DashboardController::class, 'index' ])->middleware('auth');
+// Dashboard Admin
+Route::get('/admin', function () {
+    return view('admin.home');
+})->middleware('auth');
 
+// Landing Page User
 Route::get('/', function () {
     return view('home', ['title' => 'Home Page']);
 });
