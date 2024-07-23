@@ -20,7 +20,7 @@ class PostControler extends Controller
             $author = User::firstWhere('username', request('author'));
             $title = 'by : '. $author->name;
         }
-        return view('posts', [
+        return view('enduser.blog.posts', [
             'title' => "Blog " . $title,
             // jika langsng get data akan mengalami lazy loading
             // 'posts' => Post::all()
@@ -38,7 +38,7 @@ class PostControler extends Controller
     
     public function show(Post $post)
     {
-        return view('post', [
+        return view('enduser.blog.post', [
             'title' => 'Single Post',
             'post' => $post->load(['author', 'kategori']) // Eager loading untuk author dan kategori
         ]);
