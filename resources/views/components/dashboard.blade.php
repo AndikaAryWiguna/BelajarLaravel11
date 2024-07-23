@@ -19,6 +19,8 @@
     <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+    {{-- Feather Icon --}}
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -41,7 +43,7 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="./pages/dashboard.html">
+                    <a class="nav-link {{ Request::is('admin') ? 'active' : '' }}" href="/admin">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -50,21 +52,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./pages/tables.html">
+                    <a class="nav-link {{ Request::is('admin/posts') ? 'active' : '' }}" href="/admin/posts">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Tables</span>
+                        <span class="nav-link-text ms-1">My Blog</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./pages/billing.html">
+                    <a class="nav-link {{ Request::is('icon') ? 'active' : '' }}" href="/icon">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Billing</span>
+                        <span class="nav-link-text ms-1">Icon</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -146,7 +148,7 @@
                                             <img src="./assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
                                         </div>
                                         <div class="d-flex flex-column justify-content-center">
-                                            <span class="font-weight-bold">Profile</span>
+                                            <span class="font-weight-bold">{{ auth()->user()->username }} </span>
                                         </div>
                                     </div>
                                 </a>
@@ -172,7 +174,9 @@
                                         <form action="/logout" method="post">
                                             @csrf
                                             <button type="submit" class="btn btn-outline">
-                                                <span class="p-4 font-weight-bold">Logout</span>
+                                                <span class="p-2 font-weight-bold">
+                                                    Logout <i class="px-1" data-feather="log-out"></i>
+                                                </span>
                                             </button>
                                         </form>
                                     @endauth
@@ -192,6 +196,11 @@
     <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="/assets/js/plugins/chartjs.min.js"></script>
+
+    {{-- Father Icon --}}
+    <script>
+        feather.replace();
+    </script>
 
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
